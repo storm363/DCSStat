@@ -7,3 +7,13 @@ D:\DCSStat\DCSStat\obj\Debug\DCSStat.Properties.Resources.resources
 D:\DCSStat\DCSStat\obj\Debug\DCSStat.csproj.GenerateResource.Cache
 D:\DCSStat\DCSStat\obj\Debug\DCSStat.exe
 D:\DCSStat\DCSStat\obj\Debug\DCSStat.pdb
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\bin\Debug\DCSStat.exe.config
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.exe
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.pdb
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\bin\Debug\DCSStat.exe
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\bin\Debug\DCSStat.pdb
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.csprojResolveAssemblyReference.cache
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.Form1.resources
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.Properties.Resources.resources
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\obj\Debug\DCSStat.csproj.GenerateResource.Cache
+C:\Users\Storm363\Documents\GitHub\DCSStat\DCSStat\DCSStat\bin\Debug\MySql.Data.dll
