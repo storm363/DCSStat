@@ -1,0 +1,9 @@
+D:\DCSStat\DCSStat\bin\Debug\DCSStat.exe.config
+D:\DCSStat\DCSStat\bin\Debug\DCSStat.exe
+D:\DCSStat\DCSStat\bin\Debug\DCSStat.pdb
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.csprojResolveAssemblyReference.cache
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.Form1.resources
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.Properties.Resources.resources
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.csproj.GenerateResource.Cache
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.exe
+D:\DCSStat\DCSStat\obj\Debug\DCSStat.pdb
