@@ -166,9 +166,9 @@ namespace DCSStat
                     timer2.Stop();
                 sr.Close();
                 tlen = a.Length;
-                //добавляем у счктчику 10 мс, когда будет 5000, обновляем базу данных
+                //добавляем у счетчику 10 мс, когда будет 5000, обновляем базу данных
                 dbCounter += 10;
-                label17.Text = dbCounter.ToString();
+                //label17.Text = dbCounter.ToString();
                 if (dbCounter == 5000)
                 {
                     //dbUpdate();
