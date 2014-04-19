@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
-using MySql.Data.MySqlClient;
 
 namespace DCSStat
 {
@@ -21,15 +22,45 @@ namespace DCSStat
         int crush = 0,eject=0,sec=0,min=0,chas=0, dbCounter = 0;
         int tlen = 1;
 
+        //версия DCS Release, версия DCS Beta, корень Release, корень Beta, логи DCSa
+        private string dcsRelVer, dcsBetaVer, rootRel, rootBeta, dcsLog, dcssLog;
+
         //стринги для бд
         private MySqlConnection connection;
-        private string server;
-        private string database;
-        private string uid;
-        private string password;
+        private string server, database, uid, password;
 
         public Form1()
         {
+            //Ищем игры
+            //Проверяем наличие релизной
+            RegistryKey dcsRel = Registry.CurrentUser.OpenSubKey("Software\\Eagle Dynamics\\DCS World");
+            if (dcsRel != null)
+            {
+                //Берем версию, корень
+                dcsRelVer = dcsRel.GetValue("Version").ToString();
+                rootRel = dcsRel.GetValue("Path").ToString();
+            }
+            //Проверяем наличие беты
+            RegistryKey dcsBeta = Registry.CurrentUser.OpenSubKey("Software\\Eagle Dynamics\\DCS World OpenBeta");
+            if (dcsBeta != null)
+            {
+
+                //Берем версию, корень
+                dcsBetaVer = dcsRel.GetValue("Version").ToString();
+                rootBeta = dcsRel.GetValue("Path").ToString();
+                DialogResult result = MessageBox.Show("I found DCS Openbeta version installed on your computer, would you like to use it?", "Version", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    dcsLog = Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS.openbeta\Logs\dcs.log");
+                    dcssLog = Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS.openbeta\Logs\dcss.ds");
+                }
+                else if (result == DialogResult.No)
+                {
+                    dcsLog = Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS\Logs\dcs.log");
+                    dcssLog = Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS\Logs\dcss.ds");
+                }
+            }        
+
             InitializeComponent();
         }
 
@@ -64,8 +95,8 @@ namespace DCSStat
             Process[] pname = Process.GetProcessesByName("DCS");
             if (pname.Length != 0)
             {
-                File.Copy(Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS.openbeta\Logs\dcs.log"), Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS.openbeta\Logs\dcss.ds"), true);
-                StreamReader sr = new StreamReader(Environment.ExpandEnvironmentVariables(@"%UserProfile%\Saved Games\DCS.openbeta\Logs\dcss.ds"));
+                File.Copy(dcsLog, dcssLog, true);
+                StreamReader sr = new StreamReader(dcssLog);
                 string[] a = sr.ReadToEnd().Split('\n');
                 for (int i = tlen - 1; i < a.Length - 1; i++)
                 {
@@ -184,6 +215,7 @@ namespace DCSStat
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
         }
 
         private void timer2_Tick(object sender, EventArgs e)
